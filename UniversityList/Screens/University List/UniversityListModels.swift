@@ -7,7 +7,7 @@ enum UniversityList
     struct University: Codable, Equatable {
         var webPages: [String]
         var name: String
-        var aplhaCode: String?
+        var alphaCode: String?
         var stateProvince: String?
         var domains: [String]
         var country: String?
@@ -15,7 +15,7 @@ enum UniversityList
         enum CodingKeys: String, CodingKey {
                case webPages = "web_pages"
                case name
-               case aplhaCode = "alpha_two_code"
+               case alphaCode = "alpha_two_code"
                case stateProvince = "state-province"
                case domains
                case country

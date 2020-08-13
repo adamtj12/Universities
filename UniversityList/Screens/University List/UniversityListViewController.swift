@@ -118,7 +118,7 @@ extension UniversityListViewController: UITableViewDataSource, UITableViewDelega
         cell.nameLabel.text = String(format: "Name: %@", university.name)
         cell.websitesView.text = setLinks(value: university.webPages)
         cell.domainsView.text = setLinks(value: university.domains)
-        cell.alphaCodeLabel.text = String(format: "Alpha Code: %@", university.aplhaCode ?? "No data found")
+        cell.alphaCodeLabel.text = String(format: "Alpha Code: %@", university.alphaCode ?? "No data found")
         cell.countryLabel.text = String(format: "Country: %@", university.country ?? "No data found")
         cell.provinceLabel.text = String(format: "State Province: %@", university.stateProvince ?? "No data found")
         return cell
@@ -131,7 +131,9 @@ extension UniversityListViewController: UITableViewDataSource, UITableViewDelega
             if filteredTableData.count == 0 {
                 self.displayError(error: ReuseableStrings.NoSearchResults)
             } else {
-                cancelSearchData()
+                universityTableView.isHidden = false
+                errorView.isHidden = true
+                universityTableView.reloadData()
             }
         } else {
             cancelSearchData()
