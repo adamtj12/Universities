@@ -8,9 +8,7 @@ target 'UniversityList' do
   # Pods for UniversityList
     pod 'Alamofire', '~> 4.5.0'
     pod 'SwiftyJSON', '~> 4.0'
-    pod 'NVActivityIndicatorView' 
     pod "RSLoadingView"
-    pod "SwiftChart"
 
 
   target 'UniversityListTests' do

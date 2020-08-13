@@ -77,10 +77,9 @@ class UniversityListViewController: UIViewController, UniversityListDisplayLogic
     
     @IBAction func tryAgainPressed(_ sender: Any) {
         interactor?.configureUniversityList()
-        errorView.isHidden = true
-        universityTableView.reloadData()
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        cancelSearchData()
     }
 }
 
@@ -132,9 +131,7 @@ extension UniversityListViewController: UITableViewDataSource, UITableViewDelega
             if filteredTableData.count == 0 {
                 self.displayError(error: ReuseableStrings.NoSearchResults)
             } else {
-                universityTableView.isHidden = false
-                errorView.isHidden = true
-                universityTableView.reloadData()
+                cancelSearchData()
             }
         } else {
             cancelSearchData()
@@ -142,12 +139,16 @@ extension UniversityListViewController: UITableViewDataSource, UITableViewDelega
         searchBar.resignFirstResponder()
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        cancelSearchData()
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            cancelSearchData()
+        }
     }
     
     func cancelSearchData() {
         filteredTableData.removeAll()
+        errorView.isHidden = true
+        universityTableView.isHidden = false
         universityTableView.reloadData()
     }
     
