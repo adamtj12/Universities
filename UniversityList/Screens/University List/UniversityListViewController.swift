@@ -101,7 +101,7 @@ extension UniversityListViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: UniversityListCellNames.UniversityCell) as? UniversityViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: UniversityCellConfig.UniversityCell) as? UniversityViewCell
 
         if (filteredTableData.count > 0) {
             let thisUniversity = filteredTableData[indexPath.row]
